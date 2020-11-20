@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <title>通讯录管理系统</title>
+</head>
+<body>
+<div id="login_box">
+<form id="loginForm" method="post" action="main.html">
+    <h1>登录</h1>
+    <div>
+        <img src="../static/imag/1-1.png"/>
+        <input type="text" placeholder="请输入用户名" id="username" name="username"/>
+    </div>
+    <div>
+        <img src="../static/imag/1-2.png"/>
+        <input type="password" placeholder="请输入密码" id="password" name="password"/>
+    </div>
+    <br/>
+    <div>
+        <button type="button" onclick="doSubmit()">提交</button>
+        <button type="button" onclick="document.getElementById('loginForm').reset()">重置</button>
+    </div>
+
+</form>
+</div>
+</body>
+<script>
+    function doSubmit(){
+
+        if(notTextNull("username")&&notTextNull("password")){
+            if(document.getElementById('username').value=="admin"&&document.getElementById('password').value=="666666"){
+                alert("可以提交新记录");
+                document.getElementById('loginForm').submit();
+            }else{
+                alert("用户名或密码错误");
+            }
+
+        }
+    }
+    function notTextNull(str)
+    {
+
+
+        if (document.getElementById(str).value=="")
+        {
+            alert("不能为空");
+            document.getElementById(str).focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

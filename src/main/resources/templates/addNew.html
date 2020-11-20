@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <title>通讯录管理系统</title>
+</head>
+<body>
+    <h2 align="center">添加新记录</h2>
+    <div align="center">
+        <button onclick="javascript:history.go(-1)" type="button">返回</button>
+    </div>
+    <form id="addOne" name="form1" method="post" action="check.html">
+        <p>姓名：<input id="newName" name="newName" type="text" ></p>
+        <p class="sex">
+            性别：
+            <input type="radio" name="sex" value="1" checked="checked">男士
+            <input type="radio" name="sex" value="0" checked="checked">女士
+        </p>
+        <p>手机：<input id="newTel" name="newTel" type="text" ></p>
+        <p>邮箱：<input id="newEmail" name="newEmail" type="text" ></p>
+        <p>地址：<input id="newAddr" name="newAddr" type="text" ></p>
+        <div>
+            <button type="button" onclick="doSubmit()">提交</button>
+            <button type="button" onclick="document.getElementById('addOne').reset()">重置</button>
+        </div>
+
+    </form>
+</body>
+<script>
+
+    function doSubmit(){
+        if(notTextNull("newName")&&notTextNull("newTel")&&notTextNull("newEmail")){
+            if(!(isMobile(document.getElementById("newTel").value)))
+            {
+                alert("手机号格式错误");
+                document.getElementById("newTel").focus();
+                return true;
+            }
+            if(!(isEmail(document.getElementById("newEmail").value)))
+            {
+                alert("邮箱格式错误");
+                document.getElementById("newEmail").focus();
+                return true;
+            }
+            document.getElementById('addOne').submit();
+        }
+
+    }
+    //判断是否为空
+    function notTextNull(str)
+    {
+
+        if (document.getElementById(str).value=='')
+        {
+            window.alert("不能为空");
+            document.getElementById(str).focus();
+            return false;
+        }
+        return true;
+    }
+    //判断是否为手机号
+    function isMobile(val) {
+        var regex = /^[1][0-9][0-9]{9}$/;
+        return regex.test(val);
+    }
+
+    //判断是否为邮箱
+    function isEmail(val) {
+        var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        return regex.test(val);
+    }
+</script>
+</html>
