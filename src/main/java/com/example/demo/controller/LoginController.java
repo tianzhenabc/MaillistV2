@@ -17,13 +17,6 @@ public class LoginController {
     private ClientDao clientDao;
 
 
-    @GetMapping({"/","/index"})
-    public String login() {
-        return "index";
-    }
-
-
-
     @PostMapping("/loginPost")
     public String loginPost(
             @RequestParam("username") String username,
@@ -38,16 +31,15 @@ public class LoginController {
             model.addAttribute("msg","用户名或密码错误！");
             return "index";
         }else{
-            //session.setAttribute(WebSecurityConfig.SESSION_KEY,id.intValue());
-            return "redirect:/booklist";
+            session.setAttribute("userID",id);
+            return "redirect:/booklist.html";
         }
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         // 移除session
-        //session.removeAttribute(WebSecurityConfig.SESSION_KEY);
-        //request.getSession().invalidate();
-        return "redirect:/index";
+        session.invalidate();
+        return "redirect:/index.html";
     }
 }

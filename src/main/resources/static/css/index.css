@@ -24,6 +24,24 @@ select{
     cursor: pointer;
 }
 
+.sel_btn{
+    width:50px;
+    height: 30px;
+    line-height: 21px;
+    padding: 0 11px;
+    border: 1px #26bbdb solid;
+    border-radius: 3px;
+    background: #e4e4e4;
+    font-family:arial;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+    color: #000000;
+}
+
+
 button{
     width:60px;
     height:30px;
@@ -129,3 +147,6 @@ table.TableSort tbody td {
 #addOne{ width:200px; margin:0px auto;}
 #addOne p{ line-height:25px}
 #addOne .sex input{ width:30px;}
+#editOne{ width:200px; margin:0px auto;}
+#editOne p{ line-height:25px}
+#editOne .sex input{ width:30px;}

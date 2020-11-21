@@ -9,30 +9,14 @@
 <h1 align="center">个人通讯录管理系统</h1>
 
 <div class="main_box">
-    <form action="" method="post">
 
-        <select name="sType">
-            <option selected="selected" value="id">关键字ID</option>
-            <option value="name">关键字姓名</option>
-        </select>
-        <input name="sKey" id="sKey" type="text"/>
-        <select name="order">
-            <option selected="selected" value="nameOrder">姓名排序</option>
-            <option value="telOrder">手机号排序</option>
-            <option value="sexOrder">性别排序</option>
-        </select>
-        <input type = "submit" value="搜索">
-        <input type="reset" value="重置">
-
-
-    </form>
     <div align="right">
         <button onclick="add()" type="button">添加</button>
-        <button onclick="javascript:history.go(-1)" type="button">返回</button>
+        <button onclick="Logout()" type="button">退出</button>
     </div>
 </div>
 
-<div class="main_box">
+<div class="main_box" >
 
     <table id="myTable" class="TableSort">
         <thead>
@@ -47,78 +31,37 @@
             </tr>
         </thead>
     <tbody>
-        <tr>
-            <td align="center"> 1</td>
-            <td>李林</td>
-            <td>男</td>
-            <td>111111</td>
-            <td>22222222@qq.com</td>
-            <td>北京</td>
+        <tr th:each="man:${links}">
+            <td align="center" th:text="${man.getId()}"> 1</td>
+            <td th:text="${man.getName()}">李林</td>
+            <td th:text="${man.getGender()==1?'男':'女'}">男</td>
+            <td th:text="${man.getTel()}">111111</td>
+            <td th:text="${man.getEmail()}">22222222@qq.com</td>
+            <td th:text="${man.getAddress()}">北京</td>
             <td>
                 <div align="center">
-                    <button onclick="edit(1)" type="button">编辑</button>
-                    <button onclick="del(1)" type="button">删除</button>
+                    <a class="sel_btn" th:href="@{/editLink/}+${man.getId()}">编辑</a>
+                    <a class="sel_btn" th:href="@{/deleteLink/}+${man.getId()}">删除</a>
                 </div>
 
             </td>
         </tr>
-        <tr>
-            <td align="center"> 2</td>
-            <td>王二</td>
-            <td>男</td>
-            <td>111111</td>
-            <td>222222242@qq.com</td>
-            <td>北京</td>
-            <td>
-                <div align="center">
-                    <button onclick="edit(2)" type="button">编辑</button>
-                    <button onclick="del(2)" type="button">删除</button>
-                </div>
 
-            </td>
-        </tr>
     </tbody>
     </table>
 
-    <div id="pager">
-            <button name="first" onclick="prePage(-1)" class="first"></button>
-            <button name="prev" onclick="prePage(1)" class="prev"></button>
-            <input type="text" name="pageKey"/>
-            <button name="next" onclick="nextPage(1)" class="next"></button>
-            <button name="last" onclick="nextPage(-1)" class="last"></button>
-
-            <select name="change">
-                <option selected="selected"  value="3">3</option>
-                <option value="5">5</option>
-                <option value="7">7</option>
-                <option  value="9">9</option>
-            </select>
-            <button onclick="prePage(0)">跳转</button>
-
-    </div>
 
 </div>
 </body>
 
 <script>
-    function prePage(a){
-        //-1代表到第一页,0代表根据keyPage,1代表根据keyPage和change
 
-    }
-    function nextPage(a){
-        //-1代表到最后一页
-
+    function Logout(){
+        window.location.href="logout";
     }
     function add(){
-        alert("按下了添加！");
-        window.location.href="addNew.html";
+        window.location.href="addLink";
     }
-    function edit(a){
-        alert("Id:"+a+" 需要编辑！");
-    }
-    function del(a){
-        alert("Id:"+a+" 需要删除！");
 
-    }
 </script>
 </html>

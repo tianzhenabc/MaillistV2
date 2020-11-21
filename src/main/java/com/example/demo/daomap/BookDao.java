@@ -14,10 +14,10 @@ public class BookDao {
     private Integer initId=5;//主键
     public BookDao(){
         BooksDao=new HashMap<>();
-        BooksDao.put(1,new LinkMan(1,"李三",1,"111111","111111@qq.com","北京"));
-        BooksDao.put(2,new LinkMan(2,"王五",0,"222222","222222@qq.com","上海"));
-        BooksDao.put(3,new LinkMan(3,"哈哈",1,"333333","333333@qq.com","河南"));
-        BooksDao.put(4,new LinkMan(4,"达达",0,"444444","444444@qq.com","河北"));
+        BooksDao.put(1,new LinkMan(1,"李三",1,"11111111111","111111@qq.com","北京"));
+        BooksDao.put(2,new LinkMan(2,"王五",0,"22222222222","222222@qq.com","上海"));
+        BooksDao.put(3,new LinkMan(3,"哈哈",1,"33333333333","333333@qq.com","河南"));
+        BooksDao.put(4,new LinkMan(4,"达达",0,"44444444444","444444@qq.com","河北"));
 
     }
 

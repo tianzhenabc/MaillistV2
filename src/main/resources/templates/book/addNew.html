@@ -6,20 +6,20 @@
     <title>通讯录管理系统</title>
 </head>
 <body>
-    <h2 align="center">添加新记录</h2>
+    <h2 align="center">添加联系人</h2>
     <div align="center">
         <button onclick="javascript:history.go(-1)" type="button">返回</button>
     </div>
-    <form id="addOne" name="form1" method="post" action="check.html">
-        <p>姓名：<input id="newName" name="newName" type="text" ></p>
-        <p class="sex">
+    <form id="addOne" name="form1" method="post" th:action="@{/addLink}">
+        <p>姓名：<input id="newName" name="name" type="text" ></p>
+        <p class="gender">
             性别：
-            <input type="radio" name="sex" value="1" checked="checked">男士
-            <input type="radio" name="sex" value="0" checked="checked">女士
+            <input type="radio" name="gender" value="1" checked="checked">男士
+            <input type="radio" name="gender" value="0" checked="checked">女士
         </p>
-        <p>手机：<input id="newTel" name="newTel" type="text" ></p>
-        <p>邮箱：<input id="newEmail" name="newEmail" type="text" ></p>
-        <p>地址：<input id="newAddr" name="newAddr" type="text" ></p>
+        <p>手机：<input id="newTel" name="Tel" type="text" ></p>
+        <p>邮箱：<input id="newEmail" name="email" type="text" ></p>
+        <p>地址：<input id="newAddr" name="address" type="text" ></p>
         <div>
             <button type="button" onclick="doSubmit()">提交</button>
             <button type="button" onclick="document.getElementById('addOne').reset()">重置</button>
