@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <title>通讯录管理系统</title>
 </head>
 <body>
-<h1 th:text="'欢迎来到通讯录管理系统'"></h1>
-<a href="Login.html">进行登录</a>
+<div id="login_box">
+    <form id="loginForm" action="/loginPost" method="post">
+        <h1>登录</h1>
+        <p style="color: #ff0000" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+        <div>
+            <img th:src="@{/imag/1-1.png}"/>
+            <input type="text" placeholder="请输入用户名" id="username" name="username"/>
+        </div>
+        <div>
+            <img th:src="@{/imag/1-2.png}"/>
+            <input type="password" placeholder="请输入密码" id="password" name="password"/>
+        </div>
+        <br/>
+        <div>
+            <button type="submit" >提交</button>
+            <button type="button" onclick="document.getElementById('loginForm').reset()">重置</button>
+        </div>
+
+    </form>
+</div>
 </body>
+
 </html>
