@@ -6,10 +6,7 @@ import com.example.demo.pojo.LinkMan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
@@ -38,6 +35,14 @@ public class BookListController {
     public String AddLink(LinkMan newlink){
         user.getLinks().save(newlink);//保存新联系人
         return "redirect:/booklist.html";
+    }
+
+    @GetMapping("/check")
+    @ResponseBody
+    public String toCheckTel(@RequestParam("uphone")String Tel){
+        Boolean now=user.getLinks().checkTel(Tel);
+        System.out.println(now?"1":"0");
+        return now?"1":"0";
     }
 
     @GetMapping("/editLink/{id}")

@@ -1,5 +1,6 @@
 package com.example.demo.daomap;
 
+import com.example.demo.pojo.Client;
 import com.example.demo.pojo.LinkMan;
 import org.springframework.stereotype.Repository;
 
@@ -10,10 +11,10 @@ import java.util.Map;
 @Repository
 public class BookDao {
 
-    private Map<Integer, LinkMan> BooksDao=null;
+    private Map<Integer, LinkMan> BooksDao=new HashMap<>();
     private Integer initId=5;//主键
     public BookDao(){
-        BooksDao=new HashMap<>();
+
         BooksDao.put(1,new LinkMan(1,"李三",1,"11111111111","111111@qq.com","北京"));
         BooksDao.put(2,new LinkMan(2,"王五",0,"22222222222","222222@qq.com","上海"));
         BooksDao.put(3,new LinkMan(3,"哈哈",1,"33333333333","333333@qq.com","河南"));
@@ -29,6 +30,17 @@ public class BookDao {
         BooksDao.put(one.getId(),one);
     }
 
+    public Boolean checkTel(String tel){
+        if(tel==null)
+            return false;
+        for (Integer key : BooksDao.keySet()) {
+
+            if(BooksDao.get(key).getTel().equals(tel)){
+                return false;
+            }
+        }
+        return true;
+    }
     //查询全部联系人
     public Collection<LinkMan> getBooks(){
         return BooksDao.values();

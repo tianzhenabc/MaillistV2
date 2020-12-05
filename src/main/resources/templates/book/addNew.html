@@ -17,7 +17,7 @@
             <input type="radio" name="gender" value="1" checked="checked">男士
             <input type="radio" name="gender" value="0" checked="checked">女士
         </p>
-        <p>手机：<input id="newTel" name="Tel" type="text" ></p>
+        <p>手机：<input id="newTel" name="Tel" type="text" onblur="showPhone()"><span id="uphone-show"></span></p>
         <p>邮箱：<input id="newEmail" name="email" type="text" ></p>
         <p>地址：<input id="newAddr" name="address" type="text" ></p>
         <div>
@@ -27,7 +27,39 @@
 
     </form>
 </body>
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script>
+
+
+    function checkPhone(){
+        var result = false;
+        var xhr;
+        if (window.XMLHttpRequest)
+        {
+            xhr= new XMLHttpRequest();
+        }else{
+            xhr= new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState==4 && xhr.status==200){
+                if(xhr.responseText=="0"){
+                    result = false;
+                }else{
+                    result = true;
+                }
+            }
+        };
+        xhr.open('GET', '/check?uphone='+$("#newTel").val(), true);
+        xhr.send();
+        return result;
+    }
+
+    function showPhone(){
+        if(!checkPhone()){
+            $("#uphone-show").html("该号码已添加过")
+        }
+    }
 
     function doSubmit(){
         if(notTextNull("newName")&&notTextNull("newTel")&&notTextNull("newEmail")){
